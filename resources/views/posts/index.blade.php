@@ -30,7 +30,7 @@
                         <a href="" class="font-bold">{{ $post->user->name }}</a> <span class="text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span> <!-- Date formating with carbon Library -->
 
                         <p class="mb-2">{{  $post->body }}</p>
-
+        
                         <div class="flex items-center">
                            @if(!$post->likedBy(auth()->user())) 
                             <!-- Show like option/form if user has NOT liked post -->

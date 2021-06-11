@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Like;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 
 class Post extends Model
@@ -19,9 +19,9 @@ class Post extends Model
     /**
      * Particular user cannot like a post more than once
     */
-    public function likedBy(User $user)
+    public function likedBy(User $user)  # Altered from, likedBy(User $user)
     {
-        return $this->likes->contains('user_id', $user->id);
+        return $this->likes->contains('user_id', $user->id); # Altered from, contains('user_id', $user->id);
     }
 
     public function user()

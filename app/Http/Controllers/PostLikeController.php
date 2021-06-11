@@ -25,7 +25,7 @@ class PostLikeController extends Controller
 
 
         $post->likes()->create([
-            'user_id' => $request->user()->id,
+            'user_id' => $request->user()->id
         ]);
 
         return back();
