@@ -30,9 +30,17 @@
                         <a href="" class="font-bold">{{ $post->user->name }}</a> <span class="text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span> <!-- Date formating with carbon Library -->
 
                         <p class="mb-2">{{  $post->body }}</p>
+
+                        @can('delete', $post)
+                            <form action="{{ route('posts.destroy', $post) }}" method="post">
+                                @csrf
+                                @method('DELETE')  <!-- Method spoofing -->
+                                <button type="submit" class="text-blue-500">Delete</button>
+                            </form>
+                        @endcan
         
                         <div class="flex items-center">
-                            @auth <!-- With @auth helper only authenticated users can see and access the portion below -->
+                             @auth
                                 @if(!$post->likedBy(auth()->user())) 
                                 <!-- Show like option/form if user has NOT liked post -->
                                     <form action="{{ route('posts.likes', $post) }}" method="post" class="mr-1">

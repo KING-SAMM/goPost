@@ -24,6 +24,12 @@ class Post extends Model
         return $this->likes->contains('user_id', $user->id); # Altered from, contains('user_id', $user->id);
     }
 
+    // Below was moved to a post policy (PostPolicy.php)
+    // public function ownedBy(User $user)  
+    // {
+    //     return $user->id == $this->user_id;
+    // }
+
     public function user()
     {
         return $this->belongsTo(User::class);
